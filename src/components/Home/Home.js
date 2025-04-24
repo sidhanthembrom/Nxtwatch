@@ -251,7 +251,10 @@ class Home extends Component {
                       />
                     </LoaderContainer>
                   ) : (
-                    <VideoListContainerWithSearch lightTheme={lightTheme}>
+                    <VideoListContainerWithSearch
+                      displayBanner={displayBanner}
+                      lightTheme={lightTheme}
+                    >
                       <InputContainer className="inputContainer">
                         <input
                           onChange={this.searchForVideo}

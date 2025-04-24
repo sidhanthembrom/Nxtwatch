@@ -52,7 +52,7 @@ Body {
     display: flex;
   }
 
-  .selected{
+  .selected {
     border-bottom: 2px solid gray;
   }
 }

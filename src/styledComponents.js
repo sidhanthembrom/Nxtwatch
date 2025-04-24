@@ -190,7 +190,8 @@ export const VideoListContainerWithSearch = styled.div`
   background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#181818')};
   padding: 1rem;
   overflow: scroll;
-  height: calc(100% - 200px);
+  height: ${props =>
+    props.displayBanner ? 'calc(100% - 200px)' : 'calc(100%)'};
 `
 
 export const InputContainer = styled.div`
@@ -202,7 +203,8 @@ export const NoVideoPageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 200px);
+  height: calc(100% - 100px);
+  margin-top: 2rem;
 `
 export const VideoListContainer = styled.ul`
   display: flex;
@@ -318,11 +320,12 @@ export const TextContainerVideoItemDetails = styled.div`
 `
 
 export const NotFoundPageContainer = styled.div`
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 `
+
 export const NotFoundBody = styled.div`
   display: flex;
   flex-direction: column;
