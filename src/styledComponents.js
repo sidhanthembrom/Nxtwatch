@@ -1,61 +1,60 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const LoginPageContainer = styled.div`
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const FormContainer = styled.div`
-    width: 350px;
-    padding: 2rem;
-    box-shadow:
-        0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+  width: 350px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 `
 
 export const WebsiteLogo = styled.div`
-    text-align: center;
-    margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 50px;
 `
 
 export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
 `
 export const LabelAndInputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `
 
 export const Label = styled.label`
-    color: #94a3b8;
-    font-weight: bold;
-    font-size: 12px;
+  color: #94a3b8;
+  font-weight: bold;
+  font-size: 12px;
 `
 
 export const InputBox = styled.input`
-    height: 30px;
-    padding-left: 10px;
+  height: 30px;
+  padding-left: 10px;
 `
 
 export const LoginBtn = styled.button`
-    border: 0;
-    background-color: #3b82f6;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: bold;
-    width: 100%;
+  border: 0;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
 `
 
 export const LoginErrorText = styled.p`
-    margin: 0;
-    color: red;
+  margin: 0;
+  color: red;
 `
 
 export const HomePageContainer = styled.div`
@@ -63,20 +62,20 @@ export const HomePageContainer = styled.div`
     background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#181818')};
 `
 
-export const NavbarContainer = styled.ul`  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    list-style-type: none;
-    margin: 0;
-    background-color: ${props => (props.lightTheme ? '' : '#313131')};
+export const NavbarContainer = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  list-style-type: none;
+  margin: 0;
+  background-color: ${props => (props.lightTheme ? '' : '#313131')};
 `
 
 export const NavbarRight = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 `
 
 export const ThemeBtn = styled.button`
@@ -86,23 +85,23 @@ export const ThemeBtn = styled.button`
 `
 
 export const GreyOutlineBtn = styled.button`
-    background: transparent;
-    border: 2px solid #64748b;
-    color: #64748b;
-    border-radius: 5px;
-    cursor: pointer;
+  background: transparent;
+  border: 2px solid #64748b;
+  color: #64748b;
+  border-radius: 5px;
+  cursor: pointer;
 `
 
 export const LogoutBtn = styled.button`
-    background-color: #3b82f6;
-    color: white;
-    border-radius: 5px;
-    border: 0;
-    cursor: pointer;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
 `
 
 export const BgOfPopup = styled.div`
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -115,7 +114,7 @@ position: fixed;
   z-index: 1000;
 `
 export const PopupBox = styled.div`
-background-color: white;
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -168,7 +167,7 @@ export const BannerContainer = styled.div`
 `
 
 export const CloseBtn = styled.button`
-  align-self:  flex-start;
+  align-self: flex-start;
   background: transparent;
   border: 0;
 `
@@ -190,7 +189,7 @@ export const LoaderContainer = styled.div`
 `
 
 export const VideoListContainerWithSearch = styled.div`
-      background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#181818')};
+  background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#181818')};
   padding: 1rem;
   overflow: scroll;
   height: calc(100% - 200px);
@@ -255,13 +254,15 @@ export const ListContainerGamingPage = styled.ul`
   padding: 0;
   list-style-type: none;
 `
-export const ListItemGamingPage = styled.li`
+
+export const ListItemGamingPage = styled(Link)`
   display: block;
   color: ${props => (props.lightTheme ? 'black' : 'white')};
+  text-decoration: none;
 `
 
 export const NoSavedVideoListContainer = styled.div`
-height: calc(100% - 200px);
+  height: calc(100% - 200px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -277,7 +278,7 @@ export const TabItem = styled.p`
   padding: 12px;
   background-color: ${props => (props.isActive ? '#7e858e' : '')};
   font-weight: ${props => (props.isActive ? 'bold' : '')};
-  color: ${props => (props.lightTheme ? 'black' : 'white')}
+  color: ${props => (props.lightTheme ? 'black' : 'white')};
 `
 
 export const UploadTimeAndLikeDislikeContainer = styled.div`
@@ -291,31 +292,31 @@ export const LikeDislikeContainer = styled.div`
   gap: 2rem;
 `
 export const LikeBtn = styled.button`
-background: transparent;
-border: 0;
-cursor: pointer;
-  color: ${props => (props.likeState ? '#2563eb' : '#64748b')}
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: ${props => (props.likeState ? '#2563eb' : '#64748b')};
 `
 
 export const DislikeBtn = styled.button`
-background: transparent;
-border: 0;
-cursor: pointer;
-color: ${props => (props.dislikeState ? '#2563eb' : '#64748b')}
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: ${props => (props.dislikeState ? '#2563eb' : '#64748b')};
 `
 
 export const SaveButton = styled.button`
-background: transparent;
-border: 0;
-cursor: pointer;
-color : ${props => (props.videoPresent ? '#2563eb' : '#64748b')}
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: ${props => (props.videoPresent ? '#2563eb' : '#64748b')};
 `
 
 export const TextContainerVideoItemDetails = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
-  color: ${props => (props.dislikeState ? 'black' : 'white')}
+  color: ${props => (props.lightTheme ? 'black' : 'white')};
 `
 
 export const NotFoundPageContainer = styled.div`
@@ -329,5 +330,3 @@ export const NotFoundBody = styled.div`
   flex-direction: column;
   align-items: center;
 `
-
-// FROM HERE START IMPORTING IN Home.js

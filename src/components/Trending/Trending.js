@@ -29,8 +29,9 @@ import {
   ContactUsHeading,
   ParaText,
   ListContainerTrendingPage,
-  ListItemTrendingPage,
 } from '../../styledComponents'
+
+import './Trending.css'
 
 import TabItems from '../TabItems/TabItems'
 
@@ -202,8 +203,11 @@ class Trending extends Component {
                   ) : (
                     <ListContainerTrendingPage>
                       {trendingVideoList.map(video => (
-                        <Link key={video.id} to={`/videos/${video.id}`}>
-                          <ListItemTrendingPage>
+                        <li key={video.id}>
+                          <Link
+                            to={`/videos/${video.id}`}
+                            className="trending-links"
+                          >
                             <img
                               width="400px"
                               src={video.thumbnail_url}
@@ -221,8 +225,8 @@ class Trending extends Component {
                                 {this.getUploadInfoInWords(video.published_at)}
                               </ParaText>
                             </div>
-                          </ListItemTrendingPage>
-                        </Link>
+                          </Link>
+                        </li>
                       ))}
                     </ListContainerTrendingPage>
                   )}

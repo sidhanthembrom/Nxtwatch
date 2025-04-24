@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 
 import {TabItem} from '../../styledComponents'
+import './TabItem.css'
 
 import SavedVideoListContext from '../../SavedVideoListContext/SavedVideoListContext'
 
@@ -17,7 +18,7 @@ const TabItems = props => {
         const {lightTheme} = value
 
         return (
-          <Link to={tab.link}>
+          <Link to={tab.link} className="tab-links">
             <li onClick={changingActiveTab}>
               <TabItem lightTheme={lightTheme} isActive={isActive}>
                 {tab.displayText}

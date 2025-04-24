@@ -39,6 +39,7 @@ import {
   ListItemVideo,
   TextContainer,
 } from '../../styledComponents'
+import './Home.css'
 
 const tabs = [
   {tabId: 'HOME', displayText: 'Home', link: '/'},
@@ -268,8 +269,11 @@ class Home extends Component {
                       ) : (
                         <VideoListContainer>
                           {videosList.map(video => (
-                            <Link key={video.id} to={`/videos/${video.id}`}>
-                              <ListItemVideo>
+                            <ListItemVideo key={video.id}>
+                              <Link
+                                to={`/videos/${video.id}`}
+                                className="links"
+                              >
                                 <img
                                   width="100%"
                                   src={video.thumbnail_url}
@@ -292,8 +296,8 @@ class Home extends Component {
                                     </p>
                                   </div>
                                 </TextContainer>
-                              </ListItemVideo>
-                            </Link>
+                              </Link>
+                            </ListItemVideo>
                           ))}
                         </VideoListContainer>
                       )}

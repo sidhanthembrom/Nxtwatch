@@ -28,6 +28,7 @@ import {
   ListContainerTrendingPage,
   ListItemTrendingPage,
 } from '../../styledComponents'
+import './SavedVideos.css'
 
 import TabItems from '../TabItems/TabItems'
 
@@ -184,28 +185,35 @@ class SavedVideos extends Component {
                   ) : (
                     <ListContainerTrendingPage>
                       {savedList.map(video => (
-                        <Link key={video.id} to={`/videos/${video.id}`}>
-                          <ListItemTrendingPage light={lightTheme}>
-                            <img
-                              width="400px"
-                              height="221px"
-                              src={video.thumbnail_url}
-                              alt="video thumbnail"
-                            />
-                            <div>
-                              <ParaText lightTheme={lightTheme}>
-                                {video.title}
-                              </ParaText>
-                              <ParaText lightTheme={lightTheme}>
-                                {video.channel.name}
-                              </ParaText>
-                              <ParaText lightTheme={lightTheme}>
-                                {video.view_count} |{' '}
-                                {this.getUploadInfoInWords(video.published_at)}
-                              </ParaText>
-                            </div>
-                          </ListItemTrendingPage>
-                        </Link>
+                        <li key={video.id}>
+                          <Link
+                            to={`/videos/${video.id}`}
+                            className="savedVideos-links"
+                          >
+                            <ListItemTrendingPage light={lightTheme}>
+                              <img
+                                width="400px"
+                                height="221px"
+                                src={video.thumbnail_url}
+                                alt="video thumbnail"
+                              />
+                              <div>
+                                <ParaText lightTheme={lightTheme}>
+                                  {video.title}
+                                </ParaText>
+                                <ParaText lightTheme={lightTheme}>
+                                  {video.channel.name}
+                                </ParaText>
+                                <ParaText lightTheme={lightTheme}>
+                                  {video.view_count} |{' '}
+                                  {this.getUploadInfoInWords(
+                                    video.published_at,
+                                  )}
+                                </ParaText>
+                              </div>
+                            </ListItemTrendingPage>
+                          </Link>
+                        </li>
                       ))}
                     </ListContainerTrendingPage>
                   )}

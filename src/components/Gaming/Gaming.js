@@ -30,6 +30,7 @@ import {
 } from '../../styledComponents'
 
 import TabItems from '../TabItems/TabItems'
+import './Gaming.css'
 
 import SavedVideoListContext from '../../SavedVideoListContext/SavedVideoListContext'
 
@@ -191,8 +192,11 @@ class Gaming extends Component {
                   ) : (
                     <ListContainerGamingPage>
                       {trendingVideoList.map(video => (
-                        <Link key={video.id} to={`/videos/${video.id}`}>
-                          <ListItemGamingPage lightTheme={lightTheme}>
+                        <li key={video.id}>
+                          <ListItemGamingPage
+                            lightTheme={lightTheme}
+                            to={`/videos/${video.id}`}
+                          >
                             <img
                               width="220px"
                               src={video.thumbnail_url}
@@ -201,7 +205,7 @@ class Gaming extends Component {
                             <p>{video.title}</p>
                             <p>{`${video.view_count} Watching Worldwide`}</p>
                           </ListItemGamingPage>
-                        </Link>
+                        </li>
                       ))}
                     </ListContainerGamingPage>
                   )}
