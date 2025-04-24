@@ -1,3 +1,58 @@
 .links {
   text-decoration: none;
 }
+
+Body {
+  position: relative;
+}
+
+.navbar-logo {
+  width: 200px;
+}
+
+.bodyLeft {
+  display: flex;
+}
+
+.bodyRight {
+  width: 80%;
+}
+
+.footer {
+  display: none;
+}
+
+@media (max-width: 425px) {
+  .navbar-logo {
+    width: 150px;
+  }
+
+  .bodyLeft {
+    display: none;
+    background-color: pink;
+  }
+
+  .bodyRight {
+    width: 100%;
+  }
+
+  .banner-img {
+    width: 150px;
+  }
+
+  .inputContainer {
+    justify-content: center;
+  }
+
+  .videoListContainer {
+    justify-content: center;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .selected{
+    border-bottom: 2px solid gray;
+  }
+}

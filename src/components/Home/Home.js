@@ -5,7 +5,15 @@ import Cookies from 'js-cookie'
 import Popup from 'reactjs-popup'
 
 import {formatDistanceToNow} from 'date-fns'
-import {FaMoon, FaSearch, FaSun} from 'react-icons/fa'
+import {
+  FaMoon,
+  FaSearch,
+  FaSun,
+  FaHome,
+  FaFire,
+  FaGamepad,
+  FaBookmark,
+} from 'react-icons/fa'
 import {AiOutlineClose} from 'react-icons/ai'
 import SavedVideoListContext from '../../SavedVideoListContext/SavedVideoListContext'
 
@@ -38,14 +46,20 @@ import {
   VideoListContainer,
   ListItemVideo,
   TextContainer,
+  Footer,
 } from '../../styledComponents'
 import './Home.css'
 
 const tabs = [
-  {tabId: 'HOME', displayText: 'Home', link: '/'},
-  {tabId: 'TRENDING', displayText: 'Trending', link: '/trending'},
-  {tabId: 'GAMING', displayText: 'Gaming', link: '/gaming'},
-  {tabId: 'SAVED VIDEOS', displayText: 'Saved videos', link: '/saved-videos'},
+  {tabId: 'HOME', displayText: 'Home', icon: FaHome, link: '/'},
+  {tabId: 'TRENDING', displayText: 'Trending', icon: FaFire, link: '/trending'},
+  {tabId: 'GAMING', displayText: 'Gaming', icon: FaGamepad, link: '/gaming'},
+  {
+    tabId: 'SAVED VIDEOS',
+    displayText: 'Saved videos',
+    icon: FaBookmark,
+    link: '/saved-videos',
+  },
 ]
 
 class Home extends Component {
@@ -78,13 +92,13 @@ class Home extends Component {
     )
     const data = await response.json()
 
-    console.log(data)
+    // console.log(data)
     this.setState({videosList: data.videos, isLoading: false})
   }
 
   changeActiveTab = id => {
     this.setState({tabId: id})
-    console.log(id)
+    // console.log(id)
   }
 
   searchForVideo = event => {
@@ -125,7 +139,7 @@ class Home extends Component {
               <NavbarContainer lightTheme={lightTheme}>
                 <Link to="/">
                   <img
-                    width="200px"
+                    className="navbar-logo"
                     src={
                       lightTheme
                         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
@@ -172,7 +186,7 @@ class Home extends Component {
                 </NavbarRight>
               </NavbarContainer>
               <Body>
-                <BodyLeft lightTheme={lightTheme}>
+                <BodyLeft className="bodyLeft" lightTheme={lightTheme}>
                   <TabListContainer>
                     {tabs.map(tab => (
                       <TabItems
@@ -206,13 +220,14 @@ class Home extends Component {
                   </div>
                 </BodyLeft>
 
-                <BodyRight>
+                <BodyRight className="bodyRight">
                   {displayBanner ? (
                     <BannerContainer data-testid="banner">
                       <div>
                         <img
                           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                           alt="nxt watch logo"
+                          className="banner-img"
                         />
                         <p>Buy Nxt Watch Premium prepaid plans with UPI</p>
                         <GetItNowBtnOnBanner>GET IT NOW</GetItNowBtnOnBanner>
@@ -237,7 +252,7 @@ class Home extends Component {
                     </LoaderContainer>
                   ) : (
                     <VideoListContainerWithSearch lightTheme={lightTheme}>
-                      <InputContainer>
+                      <InputContainer className="inputContainer">
                         <input
                           onChange={this.searchForVideo}
                           value={searchText}
@@ -267,7 +282,7 @@ class Home extends Component {
                           </ParaText>
                         </NoVideoPageContainer>
                       ) : (
-                        <VideoListContainer>
+                        <VideoListContainer className="videoListContainer">
                           {videosList.map(video => (
                             <ListItemVideo key={video.id}>
                               <Link
@@ -305,6 +320,23 @@ class Home extends Component {
                   )}
                 </BodyRight>
               </Body>
+              <Footer className="footer" lightTheme={lightTheme}>
+                {tabs.map(item => {
+                  const Icon = item.icon
+                  return (
+                    <Link
+                      to={item.link}
+                      key={item.tabId}
+                      className={item.tabId === tabId ? 'selected' : ''}
+                      onClick={() => {
+                        this.changeActiveTab(item.tabId)
+                      }}
+                    >
+                      <Icon color={lightTheme ? 'black' : 'white'} />
+                    </Link>
+                  )
+                })}
+              </Footer>
             </HomePageContainer>
           )
         }}

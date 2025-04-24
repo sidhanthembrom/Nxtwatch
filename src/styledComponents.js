@@ -135,7 +135,6 @@ export const Body = styled.div`
 export const BodyLeft = styled.div`
   padding: 0 1rem;
   background-color: ${props => (props.lightTheme ? '' : '#313131')};
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
@@ -152,9 +151,8 @@ export const LogoContainer = styled.div`
   gap: 5px;
 `
 
-export const BodyRight = styled.div`
-  width: 80%;
-`
+export const BodyRight = styled.div``
+
 export const BannerContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   width: 100%;
@@ -198,6 +196,7 @@ export const VideoListContainerWithSearch = styled.div`
 export const InputContainer = styled.div`
   display: flex;
 `
+
 export const NoVideoPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -226,7 +225,6 @@ export const TrendingPageContainer = styled.div`
   height: 100vh;
 `
 export const BodyRightTrending = styled.div`
-  width: 80%;
   background-color: #f8fafc;
   padding: 1rem 2rem;
   overflow: scroll;
@@ -329,4 +327,17 @@ export const NotFoundBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+export const Footer = styled.ul`
+  background-color: ${props => (props.lightTheme ? '#f9f9f9' : '#0f0f0f')};
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  bottom: 0px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 `

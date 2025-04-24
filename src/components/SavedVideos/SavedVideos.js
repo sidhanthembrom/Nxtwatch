@@ -5,7 +5,14 @@ import Popup from 'reactjs-popup'
 
 import {formatDistanceToNow} from 'date-fns'
 
-import {FaMoon, FaSun} from 'react-icons/fa'
+import {
+  FaMoon,
+  FaSun,
+  FaHome,
+  FaFire,
+  FaGamepad,
+  FaBookmark,
+} from 'react-icons/fa'
 
 import {
   NavbarContainer,
@@ -27,7 +34,9 @@ import {
   ParaText,
   ListContainerTrendingPage,
   ListItemTrendingPage,
+  Footer,
 } from '../../styledComponents'
+
 import './SavedVideos.css'
 
 import TabItems from '../TabItems/TabItems'
@@ -35,10 +44,15 @@ import TabItems from '../TabItems/TabItems'
 import SavedVideoListContext from '../../SavedVideoListContext/SavedVideoListContext'
 
 const tabs = [
-  {tabId: 'HOME', displayText: 'Home', link: '/'},
-  {tabId: 'TRENDING', displayText: 'Trending', link: '/trending'},
-  {tabId: 'GAMING', displayText: 'Gaming', link: '/gaming'},
-  {tabId: 'SAVED VIDEOS', displayText: 'Saved videos', link: '/saved-videos'},
+  {tabId: 'HOME', displayText: 'Home', icon: FaHome, link: '/'},
+  {tabId: 'TRENDING', displayText: 'Trending', icon: FaFire, link: '/trending'},
+  {tabId: 'GAMING', displayText: 'Gaming', icon: FaGamepad, link: '/gaming'},
+  {
+    tabId: 'SAVED VIDEOS',
+    displayText: 'Saved videos',
+    icon: FaBookmark,
+    link: '/saved-videos',
+  },
 ]
 
 class SavedVideos extends Component {
@@ -46,7 +60,7 @@ class SavedVideos extends Component {
 
   changeActiveTab = id => {
     this.setState({tabId: id})
-    console.log(id)
+    // console.log(id)
   }
 
   getUploadInfoInWords = uploadDate => formatDistanceToNow(new Date(uploadDate))
@@ -60,7 +74,7 @@ class SavedVideos extends Component {
   render() {
     const {tabId} = this.state
 
-    console.log(tabId)
+    // console.log(tabId)
 
     return (
       <SavedVideoListContext.Consumer>
@@ -80,7 +94,7 @@ class SavedVideos extends Component {
                 <li>
                   <Link to="/">
                     <img
-                      width="200px"
+                      className="navbar-logo"
                       src={
                         lightTheme
                           ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
@@ -131,7 +145,7 @@ class SavedVideos extends Component {
                 </li>
               </NavbarContainer>
               <Body>
-                <BodyLeft lightTheme={lightTheme}>
+                <BodyLeft className="bodyLeft" lightTheme={lightTheme}>
                   <TabListContainer>
                     {tabs.map(tab => (
                       <TabItems
@@ -164,7 +178,10 @@ class SavedVideos extends Component {
                     <p>Enjoy! Now to see your channels and recommendations!</p>
                   </div>
                 </BodyLeft>
-                <BodyRightTrending lightTheme={lightTheme}>
+                <BodyRightTrending
+                  className="bodyRightTrending"
+                  lightTheme={lightTheme}
+                >
                   <ContactUsHeading lightTheme={lightTheme}>
                     Saved Videos
                   </ContactUsHeading>
@@ -192,8 +209,7 @@ class SavedVideos extends Component {
                           >
                             <ListItemTrendingPage light={lightTheme}>
                               <img
-                                width="400px"
-                                height="221px"
+                                className="trending-page-list-item-img"
                                 src={video.thumbnail_url}
                                 alt="video thumbnail"
                               />
@@ -219,6 +235,23 @@ class SavedVideos extends Component {
                   )}
                 </BodyRightTrending>
               </Body>
+              <Footer className="footer" lightTheme={lightTheme}>
+                {tabs.map(item => {
+                  const Icon = item.icon
+                  return (
+                    <Link
+                      to={item.link}
+                      key={item.tabId}
+                      className={item.tabId === tabId ? 'selected' : ''}
+                      onClick={() => {
+                        this.changeActiveTab(item.tabId)
+                      }}
+                    >
+                      <Icon color={lightTheme ? 'black' : 'white'} />
+                    </Link>
+                  )
+                })}
+              </Footer>
             </TrendingPageContainer>
           )
         }}

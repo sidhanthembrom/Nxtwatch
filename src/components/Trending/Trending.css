@@ -4,3 +4,21 @@
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
+.bodyRightTrending {
+  width: 80%;
+}
+
+.trending-page-list-item-img {
+  width: 400px;
+}
+
+@media (max-width: 425px) {
+  .bodyRightTrending {
+    width: 100%;
+  }
+
+  .trending-page-list-item-img {
+    width: 200px;
+  }
+}

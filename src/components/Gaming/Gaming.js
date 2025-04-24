@@ -6,7 +6,14 @@ import Popup from 'reactjs-popup'
 
 import {formatDistanceToNow} from 'date-fns'
 
-import {FaMoon, FaSun} from 'react-icons/fa'
+import {
+  FaMoon,
+  FaSun,
+  FaHome,
+  FaFire,
+  FaGamepad,
+  FaBookmark,
+} from 'react-icons/fa'
 
 import {
   NavbarContainer,
@@ -27,6 +34,7 @@ import {
   ContactUsHeading,
   ListContainerGamingPage,
   ListItemGamingPage,
+  Footer,
 } from '../../styledComponents'
 
 import TabItems from '../TabItems/TabItems'
@@ -35,10 +43,15 @@ import './Gaming.css'
 import SavedVideoListContext from '../../SavedVideoListContext/SavedVideoListContext'
 
 const tabs = [
-  {tabId: 'HOME', displayText: 'Home', link: '/'},
-  {tabId: 'TRENDING', displayText: 'Trending', link: '/trending'},
-  {tabId: 'GAMING', displayText: 'Gaming', link: '/gaming'},
-  {tabId: 'SAVED VIDEOS', displayText: 'Saved videos', link: '/saved-videos'},
+  {tabId: 'HOME', displayText: 'Home', icon: FaHome, link: '/'},
+  {tabId: 'TRENDING', displayText: 'Trending', icon: FaFire, link: '/trending'},
+  {tabId: 'GAMING', displayText: 'Gaming', icon: FaGamepad, link: '/gaming'},
+  {
+    tabId: 'SAVED VIDEOS',
+    displayText: 'Saved videos',
+    icon: FaBookmark,
+    link: '/saved-videos',
+  },
 ]
 
 class Gaming extends Component {
@@ -59,13 +72,13 @@ class Gaming extends Component {
     const response = await fetch(`https://apis.ccbp.in/videos/gaming`, options)
     const data = await response.json()
 
-    console.log(data)
+    // console.log(data)
     this.setState({trendingVideoList: data.videos, isLoading: false})
   }
 
   changeActiveTab = id => {
     this.setState({tabId: id})
-    console.log(id)
+    // console.log(id)
   }
 
   getUploadInfoInWords = uploadDate => formatDistanceToNow(new Date(uploadDate))
@@ -79,7 +92,7 @@ class Gaming extends Component {
   render() {
     const {tabId, trendingVideoList, isLoading} = this.state
 
-    console.log(tabId)
+    // console.log(tabId)
 
     return (
       <SavedVideoListContext.Consumer>
@@ -95,7 +108,7 @@ class Gaming extends Component {
               <NavbarContainer lightTheme={lightTheme}>
                 <Link to="/">
                   <img
-                    width="200px"
+                    className="navbar-logo"
                     src={
                       lightTheme
                         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
@@ -143,7 +156,7 @@ class Gaming extends Component {
                 </NavbarRight>
               </NavbarContainer>
               <Body>
-                <BodyLeft lightTheme={lightTheme}>
+                <BodyLeft className="bodyLeft" lightTheme={lightTheme}>
                   <TabListContainer>
                     {tabs.map(tab => (
                       <TabItems
@@ -176,7 +189,11 @@ class Gaming extends Component {
                     <p>Enjoy! Now to see your channels and recommendations!</p>
                   </div>
                 </BodyLeft>
-                <BodyRightTrending lightTheme={lightTheme}>
+
+                <BodyRightTrending
+                  className="bodyRightTrending"
+                  lightTheme={lightTheme}
+                >
                   <ContactUsHeading lightTheme={lightTheme}>
                     Gaming
                   </ContactUsHeading>
@@ -190,7 +207,7 @@ class Gaming extends Component {
                       />
                     </LoaderContainer>
                   ) : (
-                    <ListContainerGamingPage>
+                    <ListContainerGamingPage className="listContainerGamingPage">
                       {trendingVideoList.map(video => (
                         <li key={video.id}>
                           <ListItemGamingPage
@@ -211,6 +228,23 @@ class Gaming extends Component {
                   )}
                 </BodyRightTrending>
               </Body>
+              <Footer className="footer" lightTheme={lightTheme}>
+                {tabs.map(item => {
+                  const Icon = item.icon
+                  return (
+                    <Link
+                      to={item.link}
+                      key={item.tabId}
+                      className={item.tabId === tabId ? 'selected' : ''}
+                      onClick={() => {
+                        this.changeActiveTab(item.tabId)
+                      }}
+                    >
+                      <Icon color={lightTheme ? 'black' : 'white'} />
+                    </Link>
+                  )
+                })}
+              </Footer>
             </TrendingPageContainer>
           )
         }}
