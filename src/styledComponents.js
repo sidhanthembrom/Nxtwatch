@@ -168,6 +168,7 @@ export const CloseBtn = styled.button`
   align-self: flex-start;
   background: transparent;
   border: 0;
+  cursor: pointer;
 `
 
 export const GetItNowBtnOnBanner = styled.button`

@@ -18,6 +18,10 @@ Body {
   width: 80%;
 }
 
+.searchButton {
+  cursor: pointer;
+}
+
 .footer {
   display: none;
 }

@@ -266,6 +266,7 @@ class Home extends Component {
                           type="button"
                           data-testid="searchButton"
                           onClick={this.clickToSearch}
+                          className="searchButton"
                         >
                           <FaSearch />
                         </button>
