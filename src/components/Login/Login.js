@@ -65,8 +65,13 @@ class Login extends Component {
   }
 
   render() {
-    const {username, password, passwordVisibility, loginError, loginErrorText} =
-      this.state
+    const {
+      username,
+      password,
+      passwordVisibility,
+      loginError,
+      loginErrorText,
+    } = this.state
 
     if (Cookies.get('jwt_token') !== undefined) {
       return <Redirect to="/" />
