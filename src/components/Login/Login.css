@@ -1,0 +1,42 @@
+#input-username {
+  margin-top: 5px;
+}
+
+#input-password {
+  margin-top: 5px;
+}
+
+.show-password-container {
+  display: flex;
+  align-items: center;
+}
+
+.show-password-container > input {
+  cursor: pointer;
+}
+
+#show-password-text {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.demo-credentials-container {
+  margin-top: 1rem;
+  background-color: rgb(208, 249, 255);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.demo-credentials-title {
+  margin: 0 0 5px 0;
+}
+
+.img-container-with-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.img-container-with-text > p {
+  margin: 5px 0;
+}

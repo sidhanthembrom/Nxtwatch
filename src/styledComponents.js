@@ -50,6 +50,7 @@ export const LoginBtn = styled.button`
   border-radius: 8px;
   font-weight: bold;
   width: 100%;
+  cursor: pointer;
 `
 
 export const LoginErrorText = styled.p`
